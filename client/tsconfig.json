@@ -19,8 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
-    }
+  "@/*": ["./src/*"],
+  "@/app/messages/*": ["./src/app/messages/*"]
+}
   },
   "include": [
     "next-env.d.ts",

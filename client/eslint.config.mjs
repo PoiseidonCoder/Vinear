@@ -5,7 +5,6 @@ import globals from "globals";
 import eslintPluginPrettier from "eslint-plugin-prettier";
 import tseslint from "typescript-eslint";
 import pluginJs from "@eslint/js";
-import eslintPluginTailwind from "eslint-plugin-tailwindcss";
 import eslintPluginReact from "eslint-plugin-react";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -35,7 +34,6 @@ const config = [
     },
     plugins: {
       prettier: eslintPluginPrettier,
-      tailwindcss: eslintPluginTailwind,
       react: eslintPluginReact,
     },
     rules: {
@@ -55,14 +53,19 @@ const config = [
       ],
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": "warn",
-      "tailwindcss/classnames-order": "warn",
+
       "react/forbid-elements": [
         "error",
-        [
-          { element: "a", message: "Use <Link> from next/link instead" },
-          { element: "img", message: "Use <Image> from next/image instead" },
-          { element: "script", message: "Use next/script instead" },
-        ],
+        {
+          forbid: [
+            { element: "a", message: "Use <Link> from next/link instead" },
+            { element: "img", message: "Use <Image> from next/image instead" },
+            {
+              element: "script",
+              message: "Use <Script> from next/script instead",
+            },
+          ],
+        },
       ],
     },
   },
