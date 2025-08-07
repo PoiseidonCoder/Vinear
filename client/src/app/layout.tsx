@@ -1,7 +1,8 @@
 import { Geist } from 'next/font/google';
 import './globals.css';
-import ThemeProvider from './components/providers/ThemeProvider';
+import ThemeProvider from '../components/providers/theme-provider.tsx';
 import { getLocale } from 'next-intl/server';
+import { ReactQueryProvider } from '@/components/providers/react-query-provider';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -19,7 +20,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     return (
         <html lang={locale} suppressHydrationWarning>
             <body className={`${geistSans.variable} antialiased`}>
-                <ThemeProvider>{children}</ThemeProvider>
+                <ReactQueryProvider>
+                    <ThemeProvider>{children}</ThemeProvider>
+                </ReactQueryProvider>
             </body>
         </html>
     );

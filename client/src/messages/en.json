@@ -1,4 +1,13 @@
 {
-    "hello": "Hello",
-    "welcome": "Welcome to Vinear"
+    "NotFound": {
+        "message": "Ôi không! Không tìm thấy trang.",
+        "goBackHome": "Quay về trang chủ"
+    },
+    "Error": {
+        "message": "Đã xảy ra sự cố.",
+        "suggest": "Có lỗi không mong muốn xảy ra. Vui lòng thử lại hoặc liên hệ bộ phận hỗ trợ.",
+        "goBackHome": "Quay về trang chủ"
+    },
+    "hello": "Xin chào",
+    "welcome": "Chào mừng đến với Vinear"
 }
