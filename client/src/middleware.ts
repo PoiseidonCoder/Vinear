@@ -1,16 +1,10 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import createMiddleware from 'next-intl/middleware';
 
-export function middleware(request: NextRequest) {
-    const { pathname } = request.nextUrl;
-
-    if (pathname === '/') {
-        return NextResponse.redirect(new URL('/vi', request.url));
-    }
-
-    return NextResponse.next();
-}
+export default createMiddleware({
+    locales: ['vi', 'en'],
+    defaultLocale: 'vi'
+});
 
 export const config = {
-    matcher: ['/']
+    matcher: ['/', '/(vi|en)/:path*']
 };

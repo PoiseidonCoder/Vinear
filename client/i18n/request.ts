@@ -1,19 +1,15 @@
-import { notFound } from 'next/navigation';
 import { getRequestConfig } from 'next-intl/server';
-import type { GetRequestConfigParams } from 'next-intl/server';
 
-const locales = ['en', 'vi'];
-
-export default getRequestConfig(async ({ locale }: GetRequestConfigParams) => {
-    if (!locale || !locales.includes(locale)) {
+export default getRequestConfig(async ({ locale }) => {
+    if (!locale || !['vi', 'en'].includes(locale)) {
         return {
-            locale: 'vi',
-            messages: (await import(`../messages/vi.json`)).default
+            locale: 'en',
+            messages: (await import('@/messages/en.json')).default
         };
     }
 
     return {
         locale,
-        messages: (await import(`../messages/${locale}.json`)).default
+        messages: (await import(`@/messages/${locale}.json`)).default
     };
 });
