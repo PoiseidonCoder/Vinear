@@ -1,3 +1,7 @@
+server:
+  port: 5000
+  servlet:
+    context-path: /api
 spring:
   application:
     name: Vinear
@@ -10,11 +14,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
+    open-in-view: true
 jwt:
   secret: YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYQ==
   expiration-ms: 3600000
+imagekit:
+  publicKey: public_1jQQGgwHMYw7vHti8rDLd+UBYAw=
+  privateKey: private_V0FHEknJiX5v2hZoOUhsylD2uR8=
+  urlEndpoint: https://ik.imagekit.io/Vinear/

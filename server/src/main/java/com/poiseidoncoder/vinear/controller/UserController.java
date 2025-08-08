@@ -1,7 +1,7 @@
 package com.poiseidoncoder.vinear.controller;
 
 import com.poiseidoncoder.vinear.dto.request.AuthRequestDto;
-import com.poiseidoncoder.vinear.dto.AuthResponseDto;
+import com.poiseidoncoder.vinear.dto.response.AuthResponseDto;
 import com.poiseidoncoder.vinear.service.userService.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponseDto> login(@RequestBody AuthRequestDto authRequestDto) {
-        AuthResponseDto response = userService.verify(authRequestDto);
+        AuthResponseDto response = userService.login(authRequestDto);
         return ResponseEntity.ok(response);
     }
 }

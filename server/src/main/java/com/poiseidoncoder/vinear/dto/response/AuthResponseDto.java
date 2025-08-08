@@ -1,4 +1,4 @@
-package com.poiseidoncoder.vinear.dto;
+package com.poiseidoncoder.vinear.dto.response;
 
 import lombok.Data;
 

@@ -1,8 +1,9 @@
 package com.poiseidoncoder.vinear.service.userService;
 
+import com.poiseidoncoder.vinear.model.enums.Role;
 import com.poiseidoncoder.vinear.model.Users;
 import com.poiseidoncoder.vinear.dto.request.AuthRequestDto;
-import com.poiseidoncoder.vinear.dto.AuthResponseDto;
+import com.poiseidoncoder.vinear.dto.response.AuthResponseDto;
 import com.poiseidoncoder.vinear.mapper.UserMapper;
 import com.poiseidoncoder.vinear.repository.UserRepository;
 import com.poiseidoncoder.vinear.exception.ConflictException;
@@ -33,7 +34,7 @@ public class UserService {
         Users user = new Users();
         user.setUsername(authRequestDto.getUsername());
         user.setPassword(authRequestDto.getPassword());
-        user.setRole(authRequestDto.getRole() != null ? authRequestDto.getRole() : "USER");
+        user.setRole(Role.valueOf(authRequestDto.getRole() != null ? authRequestDto.getRole() : Role.ROLE_USER.name()));
 
         String encoded = passwordEncoder.encode(user.getPassword());
         user.setPassword(encoded);
@@ -46,7 +47,7 @@ public class UserService {
         return response;
     }
 
-    public AuthResponseDto verify(AuthRequestDto authRequestDto) {
+    public AuthResponseDto login(AuthRequestDto authRequestDto) {
         Users existing = userRepository.findByUsername(authRequestDto.getUsername())
                 .orElseThrow(() -> new NotFoundException("User not found"));
 
