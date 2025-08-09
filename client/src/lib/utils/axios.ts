@@ -1,7 +1,21 @@
 import axios from 'axios';
 import useAuthStore from '@/hooks/stores/use-auth-store';
 import type { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig, AxiosHeaders } from 'axios';
-import { ApiError, ErrorResponseData } from '@/types/axios';
+import type { ApiError, ErrorResponseData, RetryConfig } from '@/types/axios';
+
+let isRefreshing = false;
+let failedQueue: Array<{ resolve: (value: string) => void; reject: (error: ApiError) => void }> = [];
+
+const processQueue = (error: ApiError | null, token: string | null = null) => {
+    failedQueue.forEach(({ resolve, reject }) => {
+        if (error) {
+            reject(error);
+        } else {
+            resolve(token!);
+        }
+    });
+    failedQueue = [];
+};
 
 const api: AxiosInstance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -12,51 +26,51 @@ const api: AxiosInstance = axios.create({
 });
 
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-    const token = useAuthStore.getState().token;
+    const token = useAuthStore.getState().sessionToken;
 
+    const headers = config.headers as AxiosHeaders;
     if (typeof token === 'string' && config.headers && typeof config.headers === 'object') {
-        const headers = config.headers as AxiosHeaders;
-        headers.Authorization = token;
+        headers.Authorization = `Bearer ${token}`;
     }
 
     return config;
 });
 
-let isRefreshing = false;
-let failedQueue: {
-    resolve: (token: string) => void;
-    reject: (error: ApiError) => void;
-}[] = [];
-
-const processQueue = (error: ApiError | null, token: string | null) => {
-    for (const { resolve, reject } of failedQueue) {
-        if (error) reject(error);
-        else if (token) resolve(token);
-    }
-    failedQueue = [];
-};
-
 const formatError = (err: AxiosError<ErrorResponseData>): ApiError => {
     const status = err.response?.status || 500;
-    const data = err.response?.data;
-    const message = data?.message || err.message || 'Unexpected error';
-    return { status, message, data };
+    const data = err.response?.data || {
+        message: 'Unexpected error',
+        errorCode: 'UNKNOWN',
+        error: null
+    };
+
+    const message = data.message || err.message || 'Unexpected error';
+
+    return {
+        status,
+        message,
+        data: {
+            message,
+            errorCode: data.errorCode || 'UNKNOWN',
+            error: data.error
+        }
+    };
 };
 
 api.interceptors.response.use(
     (response: AxiosResponse) => response,
     async (error: AxiosError<ErrorResponseData>): Promise<AxiosResponse | never> => {
+        const originalRequest = error.config as RetryConfig;
         const store = useAuthStore.getState();
-        const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
 
-        if (error.response?.status === 401 && !originalRequest._retry && store.refreshToken) {
+        if (error.response?.status === 401 && originalRequest && !originalRequest._retry && store.refreshToken) {
             if (isRefreshing) {
                 return new Promise<string>((resolve, reject) => {
                     failedQueue.push({ resolve, reject });
                 }).then((token) => {
                     if (originalRequest.headers) {
                         const headers = originalRequest.headers as AxiosHeaders;
-                        headers.Authorization = token;
+                        headers.Authorization = `Bearer ${token}`;
                     }
                     return api(originalRequest);
                 });
@@ -66,18 +80,17 @@ api.interceptors.response.use(
             isRefreshing = true;
 
             try {
-                const res = await api.post<{ token: string }>('/auth/refresh-token', {
+                const res = await api.post<{ sessionToken: string }>('/auth/refresh-token', {
                     refreshToken: store.refreshToken
                 });
 
-                const newToken = res.data.token;
-                store.setToken(newToken);
-                api.defaults.headers.common.Authorization = newToken;
+                const newToken = res.data.sessionToken;
+                store.setSessionToken(newToken);
                 processQueue(null, newToken);
 
                 if (originalRequest.headers) {
                     const headers = originalRequest.headers as AxiosHeaders;
-                    headers.Authorization = newToken;
+                    headers.Authorization = `Bearer ${newToken}`;
                 }
 
                 return api(originalRequest);
@@ -91,7 +104,8 @@ api.interceptors.response.use(
             }
         }
 
-        return Promise.reject(formatError(error));
+        const formattedError = formatError(error);
+        return Promise.reject(formattedError);
     }
 );
 

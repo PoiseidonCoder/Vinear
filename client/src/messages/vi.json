@@ -1,4 +1,131 @@
 {
-    "hello": "Xin chào",
-    "welcome": "Chào mừng bạn đến với Vinear"
+    "auth": {
+        "login_title": "Đăng nhập tài khoản",
+        "login_description": "Truy cập nền tảng Vinear để kết nối với mọi người xung quanh",
+        "username": "Tên đăng nhập",
+        "username_placeholder": "Nhập tên đăng nhập",
+        "password": "Mật khẩu",
+        "password_placeholder": "Nhập mật khẩu",
+        "username_required": "Vui lòng nhập tên đăng nhập",
+        "password_required": "Vui lòng nhập mật khẩu",
+        "login_button": "Đăng nhập",
+        "logging_in": "Đang đăng nhập...",
+        "login_success": "Đăng nhập thành công",
+        "login_failed": "Đăng nhập thất bại",
+
+        "register_title": "Tạo tài khoản mới",
+        "register_description": "Tham gia Vinear và kết nối với mọi người xung quanh",
+        "register_button": "Đăng ký",
+        "register_in": "Đang đăng ký...",
+        "register_success": "Đăng ký thành công",
+        "register_failed": "Đăng ký thất bại",
+
+        "google_login": "Tiếp tục với Google",
+        "google_register": "Đăng ký với Google",
+        "or_divider": "hoặc",
+        "no_account": "Chưa có tài khoản?",
+        "create_account": "Tạo tài khoản",
+        "have_account": "Đã có tài khoản?",
+        "sign_in": "Đăng nhập",
+        "redirecting": "Đang chuyển hướng..."
+    },
+    "home": {
+        "hero": {
+            "title": "Vinear",
+            "description": "Kết nối với mọi người trên khắp thế giới qua các cuộc gọi video chất lượng cao. Bắt đầu những cuộc trò chuyện ý nghĩa và xây dựng mối quan hệ thực sự."
+        },
+        "actions": {
+            "startVideoCall": "Bắt đầu gọi video",
+            "joinChat": "Tham gia trò chuyện",
+            "startFirstCall": "Bắt đầu cuộc gọi đầu tiên"
+        },
+        "whyChoose": {
+            "title": "Vì sao chọn Vinear?",
+            "description": "Trải nghiệm thế hệ tiếp theo của giao tiếp trực tuyến với nền tảng gọi video tiên tiến của chúng tôi."
+        },
+        "privacy": {
+            "notice": "Chúng tôi coi trọng quyền riêng tư của bạn. Mọi cuộc gọi video đều được mã hóa và dữ liệu của bạn được bảo vệ. Bạn có thể quản lý cài đặt quyền riêng tư bất cứ lúc nào.",
+            "settings": "Cài đặt quyền riêng tư",
+            "accept": "Chấp nhận",
+            "decline": "Từ chối"
+        },
+        "features": {
+            "videoCalls": {
+                "title": "Gọi video",
+                "description": "Kết nối trực diện với chất lượng cao"
+            },
+            "liveChat": {
+                "title": "Trò chuyện trực tiếp",
+                "description": "Nhắn tin theo thời gian thực với người phù hợp"
+            },
+            "groupCalls": {
+                "title": "Gọi nhóm",
+                "description": "Tổ chức cuộc gọi video với nhiều người"
+            },
+            "safeSecure": {
+                "title": "An toàn & bảo mật",
+                "description": "Mã hóa đầu cuối để bảo vệ quyền riêng tư của bạn"
+            }
+        }
+    },
+    "navbar": {
+        "home": "Trang chủ",
+        "products": "Sản phẩm",
+        "learn": "Học hỏi",
+        "safety": "An toàn",
+        "support": "Hỗ trợ",
+        "download": "Tải về",
+        "login": "Đăng nhập",
+        "register": "Đăng ký"
+    },
+    "sidebar": {
+        "home": "Trang chủ",
+        "discover": "Khám phá",
+        "messages": "Tin nhắn",
+        "settings": "Cài đặt",
+        "logout": "Đăng xuất"
+    },
+    "user_menu": {
+        "profile": "Hồ sơ",
+        "settings": "Cài đặt",
+        "logout": "Đăng xuất",
+        "no_email": "Chưa có email"
+    },
+    "settings": {
+        "title": "Cài đặt",
+        "description": "Quản lý cài đặt tài khoản và tùy chọn của bạn",
+        "profile": {
+            "title": "Hồ sơ",
+            "description": "Quản lý thông tin hồ sơ và ảnh đại diện",
+            "back_to_settings": "Quay lại Cài đặt",
+            "username": "Tên đăng nhập",
+            "username_placeholder": "Nhập tên đăng nhập",
+            "email": "Email",
+            "email_placeholder": "Nhập email",
+            "uploading_avatar": "Đang tải ảnh đại diện...",
+            "saving": "Đang lưu...",
+            "save_changes": "Lưu thay đổi",
+            "crop_image": "Cắt ảnh",
+            "crop_image_description": "Điều chỉnh vị trí và kích thước ảnh đại diện",
+            "zoom": "Phóng to",
+            "rotation": "Xoay",
+            "crop_size": "Kích thước cắt",
+            "cancel": "Hủy",
+            "apply_crop": "Áp dụng"
+        },
+        "privacy": {
+            "title": "Quyền riêng tư",
+            "description": "Kiểm soát cài đặt quyền riêng tư và bảo mật"
+        },
+        "appearance": {
+            "title": "Giao diện",
+            "description": "Tùy chỉnh giao diện của ứng dụng"
+        }
+    },
+    "toast": {
+        "profile_updated_success": "Cập nhật hồ sơ thành công",
+        "profile_updated_error": "Cập nhật hồ sơ thất bại",
+        "avatar_uploaded_success": "Tải ảnh đại diện thành công",
+        "avatar_uploaded_error": "Tải ảnh đại diện thất bại"
+    }
 }

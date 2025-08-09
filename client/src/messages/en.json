@@ -1,13 +1,131 @@
 {
-    "NotFound": {
-        "message": "Ôi không! Không tìm thấy trang.",
-        "goBackHome": "Quay về trang chủ"
+    "auth": {
+        "register_title": "Create a new account",
+        "register_description": "Join Vinear and connect with people around you",
+        "register_button": "Register",
+        "register_in": "Registering...",
+        "register_success": "Registered successfully",
+        "register_failed": "Registration failed",
+
+        "login_title": "Sign in to your account",
+        "login_description": "Access the Vinear platform and connect with people around you",
+        "username": "Username",
+        "username_placeholder": "Enter your username",
+        "password": "Password",
+        "password_placeholder": "Enter your password",
+        "username_required": "Please enter your username",
+        "password_required": "Please enter your password",
+        "login_button": "Sign in",
+        "logging_in": "Signing in...",
+        "login_success": "Signed in successfully",
+        "login_failed": "Failed to sign in",
+
+        "google_login": "Continue with Google",
+        "google_register": "Sign up with Google",
+        "or_divider": "or",
+        "no_account": "Don't have an account?",
+        "create_account": "Create account",
+        "have_account": "Already have an account?",
+        "sign_in": "Sign in",
+        "redirecting": "Redirecting..."
     },
-    "Error": {
-        "message": "Đã xảy ra sự cố.",
-        "suggest": "Có lỗi không mong muốn xảy ra. Vui lòng thử lại hoặc liên hệ bộ phận hỗ trợ.",
-        "goBackHome": "Quay về trang chủ"
+    "home": {
+        "hero": {
+            "title": "Vinear",
+            "description": "Connect with people around the world through high-quality video calls. Start meaningful conversations and build real relationships."
+        },
+        "actions": {
+            "startVideoCall": "Start Video Call",
+            "joinChat": "Join Chat",
+            "startFirstCall": "Start Your First Call"
+        },
+        "whyChoose": {
+            "title": "Why Choose Vinear?",
+            "description": "Experience the next generation of online communication with our advanced video calling platform."
+        },
+        "privacy": {
+            "notice": "We value your privacy. All video calls are encrypted and your data is protected. You can manage your privacy settings anytime.",
+            "settings": "Privacy Settings",
+            "accept": "Accept",
+            "decline": "Decline"
+        },
+        "features": {
+            "videoCalls": {
+                "title": "Video Calls",
+                "description": "Connect face-to-face with high quality video calls"
+            },
+            "liveChat": {
+                "title": "Live Chat",
+                "description": "Real-time messaging with your matches"
+            },
+            "groupCalls": {
+                "title": "Group Calls",
+                "description": "Host group video calls with multiple people"
+            },
+            "safeSecure": {
+                "title": "Safe & Secure",
+                "description": "End-to-end encryption for your privacy"
+            }
+        }
     },
-    "hello": "Xin chào",
-    "welcome": "Chào mừng đến với Vinear"
+    "navbar": {
+        "home": "Home",
+        "products": "Products",
+        "learn": "Learn",
+        "safety": "Safety",
+        "support": "Support",
+        "download": "Download",
+        "login": "Log in",
+        "register": "Register"
+    },
+    "sidebar": {
+        "home": "Home",
+        "discover": "Discover",
+        "messages": "Messages",
+        "settings": "Settings",
+        "logout": "Logout"
+    },
+    "user_menu": {
+        "profile": "Profile",
+        "settings": "Settings",
+        "logout": "Logout",
+        "no_email": "No email"
+    },
+    "settings": {
+        "title": "Settings",
+        "description": "Manage your account settings and preferences",
+        "profile": {
+            "title": "Profile",
+            "description": "Manage your profile information and avatar",
+            "back_to_settings": "Back to Settings",
+            "username": "Username",
+            "username_placeholder": "Enter your username",
+            "email": "Email",
+            "email_placeholder": "Enter your email",
+            "uploading_avatar": "Uploading avatar...",
+            "saving": "Saving...",
+            "save_changes": "Save Changes",
+            "crop_image": "Crop Avatar",
+            "crop_image_description": "Adjust the position and size of your circular avatar",
+            "zoom": "Zoom",
+            "rotation": "Rotation",
+            "crop_size": "Crop Size",
+            "cancel": "Cancel",
+            "apply_crop": "Apply Crop"
+        },
+        "privacy": {
+            "title": "Privacy",
+            "description": "Control your privacy and security settings"
+        },
+        "appearance": {
+            "title": "Appearance",
+            "description": "Customize the look and feel of the app"
+        }
+    },
+    "toast": {
+        "profile_updated_success": "Profile updated successfully",
+        "profile_updated_error": "Failed to update profile",
+        "avatar_uploaded_success": "Avatar uploaded successfully",
+        "avatar_uploaded_error": "Failed to upload avatar"
+    }
 }
